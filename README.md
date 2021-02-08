@@ -1,4 +1,4 @@
-# EmailSenderTest
+# Email Sender Test with FluentEmail
 This is a console that sends email with FluentEmail with a bunch of PDF files attached.
 
 # My Sources
