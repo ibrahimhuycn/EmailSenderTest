@@ -60,7 +60,7 @@ The obvious drawback to this method is that you can only attach a single file pe
            .From("john@email.com")
            .To("bob@email.com", "bob")
            .Subject("hows it going bob")
-           .AttachFromFilename("C:\\Your Filename.pdf")
+           .Attach(attachments)
            .Body("yo bob, long time no see!")
            .SendAsync();
    }
