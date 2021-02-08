@@ -26,6 +26,9 @@ The obvious drawback to this method is that you can only attach a single file pe
    How on earth do I do that...? BTW... not just file stream..., any stream should do... I guess. The following is how I managed to do... not near perfect since I have no idea when the file stream gets closed.
 
    ```c#
+    DirectoryInfo d = new DirectoryInfo(@"C:\Export"); //Assuming Test is your Folder
+    FileInfo[] Files = d.GetFiles("*.pdf"); //Getting pdf files
+
    List<Attachment> attachments = new List<Attachment>();
    
    // I guess you are going to make sure that the size of attachments does not 
