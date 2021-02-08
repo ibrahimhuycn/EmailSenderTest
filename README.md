@@ -1,5 +1,5 @@
 # Email Sender Test with FluentEmail
-This is a console that sends email with FluentEmail with a bunch of PDF files attached.
+This is a console app that sends email with FluentEmail with a bunch of PDF files attached.
 
 # My Sources
 I was watching a video from Tim Corey. He does not mentioned anything about adding attachments which I needed to do. First of all, here is a link to his youtube video. Go give a like and come back!
