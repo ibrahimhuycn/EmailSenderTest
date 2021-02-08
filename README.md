@@ -2,7 +2,7 @@
 This is a console that sends email with FluentEmail with a bunch of PDF files attached.
 
 # My Sources
-I was watching a video from Tim Corey. He does not mentioned anything about adding attachments which I needed to do. First of all, here is a link to his youtube video.
+I was watching a video from Tim Corey. He does not mentioned anything about adding attachments which I needed to do. First of all, here is a link to his youtube video. Go give a like and come back!
 https://www.youtube.com/watch?v=qSeO9886nRM
 
 # Two ways to add attachments in FluentEmail
