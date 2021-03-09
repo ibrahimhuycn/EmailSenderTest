@@ -4,11 +4,11 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <StartupObject>EmailSenderTest.Program</StartupObject>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentEmail.Razor" Version="3.0.0" />
-    <PackageReference Include="FluentEmail.Smtp" Version="3.0.0" />
+    <ProjectReference Include="..\CD4.ReportDispatch.Mail\CD4.ReportDispatch.Mail.csproj" />
   </ItemGroup>
 
 </Project>

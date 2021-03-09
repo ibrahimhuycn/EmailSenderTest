@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentEmail.Razor" Version="3.0.0" />
+    <PackageReference Include="FluentEmail.Smtp" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CD4.ReportDispatch.SDK\CD4.ReportDispatch.SDK.csproj" />
+  </ItemGroup>
+
+</Project>

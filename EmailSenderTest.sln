@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailSenderTest", "EmailSenderTest\EmailSenderTest.csproj", "{67BFEC8F-5491-4AB5-838C-43AC3D692BE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSenderTest", "EmailSenderTest\EmailSenderTest.csproj", "{67BFEC8F-5491-4AB5-838C-43AC3D692BE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CD4.ReportDispatch.Mail", "CD4.ReportDispatch.Mail\CD4.ReportDispatch.Mail.csproj", "{B75F3A6E-2D53-4786-A185-68980136D99C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CD4.ReportDispatch.SDK", "CD4.ReportDispatch.SDK\CD4.ReportDispatch.SDK.csproj", "{87B8C587-2F4D-4AC5-BC91-D69D6DCB4BA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{67BFEC8F-5491-4AB5-838C-43AC3D692BE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67BFEC8F-5491-4AB5-838C-43AC3D692BE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67BFEC8F-5491-4AB5-838C-43AC3D692BE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B75F3A6E-2D53-4786-A185-68980136D99C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B75F3A6E-2D53-4786-A185-68980136D99C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B75F3A6E-2D53-4786-A185-68980136D99C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B75F3A6E-2D53-4786-A185-68980136D99C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87B8C587-2F4D-4AC5-BC91-D69D6DCB4BA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87B8C587-2F4D-4AC5-BC91-D69D6DCB4BA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87B8C587-2F4D-4AC5-BC91-D69D6DCB4BA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87B8C587-2F4D-4AC5-BC91-D69D6DCB4BA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
