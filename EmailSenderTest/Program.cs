@@ -14,7 +14,7 @@ namespace EmailSenderTest
             var dispatch = new Dispatch();
             var mailModel = new EmailModel()
             {
-                Subject = $"CD4 LIMS: COVID-19 PCR Test Results {DateTime.Today}",
+                Subject = $"CD4 LIMS: COVID-19 PCR Test Results {DateTime.Today:dd.MM.yyyy}",
                 ToAddress = "ibrahim.hucyn@live.com",
                 ToDisplayName = "Ibrahim",
                 Template = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "medlab_reportdispatch_template.html"))
