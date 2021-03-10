@@ -2,6 +2,7 @@
 using CD4.ReportDispatch.SDK.Models;
 using CD4.ReportDispatch.SDK.Services;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace EmailSenderTest
@@ -16,7 +17,8 @@ namespace EmailSenderTest
                 Subject = $"CD4 LIMS: COVID-19 PCR Test Results {DateTime.Today}",
                 ToAddress = "ibrahim.hucyn@live.com",
                 ToDisplayName = "Ibrahim",
-            };
+                Template = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "medlab_reportdispatch_template.html"))
+        };
 
             await dispatch.ExecuteAsync(new PapercutSmtpService(), await (new AttachmentService()).GetAttachmentsAsync(), mailModel);
             //await d.ExecuteAsync(new OutlookSmptService(), await (new AttachmentService()).GetAttachmentsAsync(), mailModel);

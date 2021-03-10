@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
 namespace CD4.ReportDispatch.SDK.Models
 {
@@ -10,7 +8,6 @@ namespace CD4.ReportDispatch.SDK.Models
         public EmailModel()
         {
             //get this at another place... later
-            Template = File.ReadAllText(@"C:\Users\ibrahimhucyn\Desktop\template.html");
             TemplateModel = new { Name = "Bob" };
         }
         public string ToAddress { get; set; }
