@@ -1,4 +1,5 @@
-﻿using FluentEmail.Smtp;
+﻿using CD4.ReportDispatch.SDK.Models;
+using FluentEmail.Smtp;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,24 +10,21 @@ namespace CD4.ReportDispatch.SDK.Services
     {
         public PapercutSmtpService()
         {
-            HostUrl = "localhost";
-            Port = 25;
-            EnableSsl = false;
-            FromAddress = "ibrahim.hucyn@gmail.com";
+            SmtpSettings = new SmtpSettingsModel();
+            SmtpSettings.HostUrl = "localhost";
+            SmtpSettings.Port = 25;
+            SmtpSettings.EnableSsl = false;
+            SmtpSettings.FromAddress = "ibrahim.hucyn@gmail.com";
         }
-        public string ApiKey { get; set; }
-        public string FromAddress { get; set; }
-        public bool EnableSsl { get; set; }
-        public string HostUrl { get; set; }
-        public int Port { get; set; }
+        public SmtpSettingsModel SmtpSettings { get; set; }
 
         public SmtpSender GetSmtpSender()
         {
-            return new SmtpSender(() => new System.Net.Mail.SmtpClient(HostUrl)
+            return new SmtpSender(() => new System.Net.Mail.SmtpClient(SmtpSettings.HostUrl)
             {
-                EnableSsl = EnableSsl,
+                EnableSsl = SmtpSettings.EnableSsl,
                 DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network,
-                Port = Port,
+                Port = SmtpSettings.Port,
             });
         }
     }

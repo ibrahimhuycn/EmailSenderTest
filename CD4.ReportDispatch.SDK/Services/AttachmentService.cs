@@ -3,52 +3,61 @@ using FluentEmail.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CD4.ReportDispatch.SDK.Services
 {
     public class AttachmentService
     {
+        #region Default Constructor
         public AttachmentService()
         {
+            ServiceModel = new AttachmentModel();
             Initialize();
         }
 
-        private void Initialize()
-        {
-            //get the information from somewhere
-            Directory = @"C:\Export";
-            Extension = "*.pdf";
-            ContentType = "application/pdf";
-        }
+        #endregion
 
-        public string ContentType { get; set; }
-        public string Extension { get; set; }
-        public string Directory { get; set; }
+        #region Public Properties
+        public AttachmentModel ServiceModel { get; set; }
+        #endregion
 
-        public async Task<AttachmentModel> GetAttachmentsAsync()
+        #region Public Methods
+        public async Task<AttachmentCollection> GetAttachmentsAsync()
         {
-            var directoryInfor = new DirectoryInfo(Directory);
-            var fileInfos = await Task.Run(() => directoryInfor.GetFiles(Extension)); //Getting files
+            var directoryInfor = new DirectoryInfo(ServiceModel.Directory);
+            var fileInfos = await Task.Run(() => directoryInfor.GetFiles(ServiceModel.Extension)); //Getting files
 
             List<Attachment> attachments = new List<Attachment>();
 
             var attachmentSize = 0L;
             foreach (var file in fileInfos)
             {
-                attachmentSize += file.Length; 
+                attachmentSize += file.Length;
                 attachments.Add(new Attachment()
                 {
                     ContentId = Guid.NewGuid().ToString(),
-                    ContentType = ContentType, 
+                    ContentType = ServiceModel.ContentType,
                     Filename = file.Name,
                     IsInline = false,
                     Data = new FileStream(file.FullName, FileMode.Open)
                 });
             }
 
-            return new AttachmentModel() { Attachments = attachments, AttachmentSize = attachmentSize };
+            return new AttachmentCollection() { Attachments = attachments, AttachmentSize = attachmentSize };
         }
+
+        #endregion
+
+        #region Private Methods
+        private void Initialize()
+        {
+            //get the information from somewhere
+            ServiceModel.Directory = @"C:\Export";
+            ServiceModel.Extension = "*.pdf";
+            ServiceModel.ContentType = "application/pdf";
+        }
+        #endregion
+
     }
 }

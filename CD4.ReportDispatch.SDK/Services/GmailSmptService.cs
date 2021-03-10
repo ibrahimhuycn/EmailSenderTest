@@ -1,4 +1,5 @@
-﻿using FluentEmail.Smtp;
+﻿using CD4.ReportDispatch.SDK.Models;
+using FluentEmail.Smtp;
 
 namespace CD4.ReportDispatch.SDK.Services
 {
@@ -6,26 +7,25 @@ namespace CD4.ReportDispatch.SDK.Services
     {
         public GmailSmptService()
         {
-            HostUrl = "smtp.gmail.com";
-            Port = 587;
-            EnableSsl = true;
-            ApiKey = "";
-            FromAddress = "ibrahim.hucyn@gmail.com";
+            SmtpSettings = new SmtpSettingsModel();
+
+            SmtpSettings.HostUrl = "smtp.gmail.com";
+            SmtpSettings.Port = 587;
+            SmtpSettings.EnableSsl = true;
+            SmtpSettings.ApiKeyOrPassword = "";
+            SmtpSettings.FromAddress = "ibrahim.hucyn@gmail.com";
         }
-        public string ApiKey { get; set; }
-        public string FromAddress { get; set; }
-        public bool EnableSsl { get; set; }
-        public string HostUrl { get; set; }
-        public int Port { get; set; }
+
+        public SmtpSettingsModel SmtpSettings { get; set; }
 
         public SmtpSender GetSmtpSender()
         {
-            return new SmtpSender(() => new System.Net.Mail.SmtpClient(HostUrl)
+            return new SmtpSender(() => new System.Net.Mail.SmtpClient(SmtpSettings.HostUrl)
             {
-                EnableSsl = EnableSsl,
+                EnableSsl = SmtpSettings.EnableSsl,
                 DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network,
-                Credentials = new System.Net.NetworkCredential(FromAddress, ApiKey),
-                Port = Port,
+                Credentials = new System.Net.NetworkCredential(SmtpSettings.FromAddress, SmtpSettings.ApiKeyOrPassword),
+                Port = SmtpSettings.Port,
             });
         }
     }

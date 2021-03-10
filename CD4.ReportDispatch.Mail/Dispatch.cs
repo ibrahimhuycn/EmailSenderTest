@@ -3,36 +3,36 @@ using CD4.ReportDispatch.SDK.Services;
 using FluentEmail.Core;
 using FluentEmail.Razor;
 using System;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CD4.ReportDispatch.Mail
 {
     public class Dispatch
     {
-        public async Task ExecuteAsync(ISmtpService smtpSettings, AttachmentModel attachments)
+        public async Task ExecuteAsync(ISmtpService smtpService,
+            AttachmentCollection attachments, EmailModel emailModel)
         {
-            Email.DefaultSender = smtpSettings.GetSmtpSender();
+            Email.DefaultSender = smtpService.GetSmtpSender();
             Email.DefaultRenderer = new RazorRenderer();
 
-            var template = new StringBuilder();
-            template.AppendLine("Dear @Model.FullName");
+            var maxMailSize = 25;
 
-            if ((attachments.AttachmentSize / (1024 * 1024)) < 25)
+            if ((attachments.AttachmentSize / (1024 * 1024)) < maxMailSize)
             {
                 var email = await Email
-                    .From(smtpSettings.FromAddress)
-                    .To("ibrahim.hucyn@live.com", "bob")
-                    .Subject("hows it going bob")
+                    .From(smtpService.SmtpSettings.FromAddress, "swatincadmin")
+                    .To(emailModel.ToAddress, emailModel.ToDisplayName)
+                    .Subject(emailModel.Subject)
                     .Attach(attachments.Attachments)
-                    .UsingTemplate(template.ToString(), new {FullName = "Bob"})
+                    .UsingTemplate(emailModel.Template, emailModel.TemplateModel)
                     .SendAsync();
             }
             else
             {
-                Console.WriteLine("Attachment size exceeded 25MB");
+                throw new Exception($"Cannot mail since the mail size exceeds maximum allowed {maxMailSize} MB");
             }
 
         }
     }
+
 }
